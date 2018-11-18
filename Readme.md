@@ -1,5 +1,8 @@
 ## Workshop FMCat
 
+Barcelona, 17 de Noviembre de 2018
+
+
 ### Desarrollo de Aplicaciones híbridas web/mobile para sistemas FileMaker
 
 #### Descripción
@@ -48,3 +51,9 @@ NOTA: Modulo no necesario en caso de disponer de FMSv17 ya que esta versión dis
 
 ![](https://fmcatalonia.files.wordpress.com/2018/06/wshop-fcat-stack.png?w=480)
 
+
+### Creditos
+
+Workshop oprganizado por FileMaker Catalonia, FMcat ().
+
+Dirigido por Joan Subirós jsubiros@fmsuit.com (FMsuit https://www.fmsuit.com)
