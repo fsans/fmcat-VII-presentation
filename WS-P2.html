@@ -1,0 +1,1094 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>WS-P2 NodeJS Backend & Angular Frontend</title>
+	<style id="snippetslab-markdown-theme">
+
+abbr[title] {
+    border-bottom: 1px dotted
+}
+
+b, strong {
+    font-weight: 700
+}
+
+dfn {
+    font-style: italic
+}
+
+mark {
+    background: #ff0;
+    color: #000
+}
+
+small {
+    font-size: 80%
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+img {
+    border: 0
+}
+
+figure {
+    margin: 1em 40px
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
+}
+
+pre {
+    overflow: auto
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    border: 0;
+    padding: 0
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+td, 
+th {
+    padding: 0
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+:before, :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.42857143;
+}
+
+body > :first-child,
+body > .toc:first-child + * {
+    margin-top: 0;
+}
+
+a {
+    text-decoration: none
+}
+
+a:hover, a:focus {
+    text-decoration: underline
+}
+
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px
+}
+
+figure {
+    margin: 0
+}
+
+img {
+    vertical-align: middle
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.3;
+    color: inherit;
+    overflow: hidden;
+}
+
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px
+}
+
+h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+h1 {
+    font-size: 24px
+}
+
+h2 {
+    font-size: 22px
+}
+
+h3 {
+    font-size: 18px
+}
+
+h4 {
+    font-size: 16px
+}
+
+h5 {
+    font-size: 14px
+}
+
+h6 {
+    font-size: 12px
+}
+
+p {
+    margin: 0 0 10px
+}
+
+cite {
+    font-style: normal
+}
+
+ul, 
+ol {
+    margin-top: 0;
+    margin-bottom: 10px
+}
+
+ul ul, 
+ol ul, 
+ul ol, 
+ol ol {
+    margin-bottom: 0
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 20px
+}
+
+dt, 
+dd {
+    line-height: 1.42857143
+}
+
+dt {
+    font-weight: 700
+}
+
+dd {
+    margin-left: 0
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    border-left: 5px solid #eee
+}
+
+blockquote p:last-child, 
+blockquote ul:last-child, 
+blockquote ol:last-child {
+    margin-bottom: 0
+}
+
+blockquote:before, 
+blockquote:after {
+    content: ""
+}
+
+address {
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 1.42857143
+}
+
+code, kbd, pre, samp {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    white-space: nowrap;
+    border-radius: 4px
+}
+
+kbd {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #fff;
+    background-color: #333;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25)
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0
+}
+
+table {
+    max-width: 100%;
+    background-color: transparent
+}
+
+th:not([align]) {
+    text-align: left
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+table > thead > tr > th, 
+table > tbody > tr > th, 
+table > tfoot > tr > th, 
+table > thead > tr > td,
+table > tbody > tr > td, 
+table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd
+}
+
+table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd
+}
+
+table > caption + thead > tr:first-child > th, 
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th, 
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td, 
+table > thead:first-child > tr:first-child > td {
+    border-top: 0
+}
+
+table > tbody + tbody {
+    border-top: 2px solid #ddd
+}
+
+table table {
+    background-color: #fff
+}
+
+.table-condensed > thead > tr > th, 
+.table-condensed > tbody > tr > th, 
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td, 
+.table-condensed > tbody > tr > td, 
+.table-condensed > tfoot > tr > td {
+    padding: 5px
+}
+
+.table-bordered {
+    border: 1px solid #ddd
+}
+
+.table-bordered > thead > tr > th, 
+.table-bordered > tbody > tr > th, 
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td, 
+.table-bordered > tbody > tr > td, 
+.table-bordered > tfoot > tr > td {
+    border: 1px solid #ddd
+}
+
+.table-bordered > thead > tr > th, 
+.table-bordered > thead > tr > td {
+    border-bottom-width: 2px
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, 
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #f9f9f9
+}
+
+.table-hover > tbody > tr:hover > td, 
+.table-hover > tbody > tr:hover > th {
+    background-color: #f5f5f5
+}
+
+table > thead > tr > td.active, 
+table > tbody > tr > td.active, 
+table > tfoot > tr > td.active,
+table > thead > tr > th.active, 
+table > tbody > tr > th.active, 
+table > tfoot > tr > th.active,
+table > thead > tr.active > td, 
+table > tbody > tr.active > td, 
+table > tfoot > tr.active > td,
+table > thead > tr.active > th, 
+table > tbody > tr.active > th, 
+table > tfoot > tr.active > th {
+    background-color: #f5f5f5
+}
+
+.table-hover > tbody > tr > td.active:hover, 
+.table-hover > tbody > tr > th.active:hover,
+.table-hover > tbody > tr.active:hover > td, 
+.table-hover > tbody > tr.active:hover > th {
+    background-color: #e8e8e8
+}
+
+.toc {
+    max-width: 200px;
+    float: right;
+    margin: 0 0 20px 20px;
+    padding: 10px 0;
+    background-color: rgba(0,0,0,0.03);
+}
+
+.toc > ul {
+    margin: 0;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+.toc a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #767676;
+    border-left: 2px solid transparent;
+}
+.toc a:hover,
+.toc a:focus {
+    color: #563d7c;
+    text-decoration: none;
+    border-left: 2px solid #563d7c;
+}
+
+.toc ul ul {
+    padding-bottom: 5px;
+}
+
+.toc ul ul > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* Light Style */
+
+.app-style-light {
+    color: #333;
+}
+
+.app-style-light a {
+    color: #428bca;
+}
+
+.app-style-light a:hover, 
+.app-style-light a:focus {
+    color: #2a6496;
+}
+
+/* Dark Style */
+
+.app-style-dark a {
+    color: #1ca8dd;
+}
+
+.app-style-dark a:hover, 
+.app-style-dark a:focus {
+    color: rgb(19, 116, 153);
+}
+
+.app-style-dark code {
+    background-color: rgba(0,0,0,0.4);
+    border: none;
+    color: #c7254e;
+}
+
+.app-style-dark pre {
+    background-color: rgba(0,0,0,0.25);
+    color: #bbb;
+    border: none;
+}
+
+.app-style-dark blockquote {
+    border-left-color: rgba(255,255,255,0.1);
+}
+
+.app-style-dark hr {
+    border-top-color: rgba(255,255,255,0.3);
+}
+
+.app-style-dark table td {
+    border-top-color: rgba(255,255,255,0.1);
+}
+
+.app-style-dark table th {
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.app-style-dark .toc {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.app-style-dark .toc a {
+    color: #9198aa;
+    transition: color 200ms ease;
+}
+
+.app-style-dark .toc a:hover,
+.app-style-dark .toc a:focus {
+    color: #fff;
+    border-left-color: transparent;
+}
+
+/* Solarized Light Theme */
+
+.app-theme-Solarized-Light {
+    color: #657b83;
+}
+
+.app-theme-Solarized-Light a,
+.app-theme-Solarized-Light a:active,
+.app-theme-Solarized-Light a:visited {
+    color: #b58900;
+}
+
+.app-theme-Solarized-Light .toc {
+    background-color: rgba(0,0,0,.04);
+}
+
+.app-theme-Solarized-Light .toc a,
+.app-theme-Solarized-Light .toc a:active,
+.app-theme-Solarized-Light .toc a:visited {
+    color: #657b83;
+}
+
+.app-theme-Solarized-Light code {
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-weight: bold;
+}
+
+.app-theme-Solarized-Light pre {
+    background-color: #eee8d5;
+    border: none;
+    color: inherit;
+}
+
+.app-theme-Solarized-Light blockquote {
+    border-left-color: #eee8d5;
+}
+
+.app-theme-Solarized-Light hr {
+    border-top-color: #657b83;
+}
+
+.app-theme-Solarized-Light table td {
+    border-top-color: #657b83;
+}
+
+.app-theme-Solarized-Light table th {
+    border-bottom-color: #657b83;
+}
+
+.app-theme-Solarized-Light .toc a:hover,
+.app-theme-Solarized-Light .toc a:focus {
+    border-left-color: #657b83;
+}
+
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 13px;line-height: 1.5;background-color: #f7f7f7;margin: 5px 16px 30px;color: #37474f }h1 { font-size: 24px }h2 { font-size: 22px }h3 { font-size: 20px }h4 { font-size: 18px }h5 { font-size: 16px }h6 { font-size: 14px }a { color: #0850d0 }.MathJax .noError { color: #37474f !important }pre, code, kbd, samp { font-family: 'Menlo', Menlo, Consolas, Monaco, Courier, monospace; font-size: 12px; -webkit-font-smoothing: subpixel-antialiased !important; }ul, ol { word-break: break-word }img { max-width: 100% !important }code { white-space: normal !important }pre { white-space: pre-wrap !important } .codehilite .g { color: #37474f } .codehilite .nf { color: #37474f } .codehilite .bp { color: #512b8c } .codehilite .ss { color: #f2453d } .codehilite .esc { color: #37474f } .codehilite .nx { color: #37474f } .codehilite .nb { color: #9b26ac } .codehilite .cp { color: #37474f } .codehilite .cpf { color: #37474f } .codehilite .gh { color: #9b26ac } .codehilite .gi { color: #37474f } .codehilite .kt { color: #9b26ac } .codehilite .si { color: #f2453d } .codehilite .nt { color: #9b26ac } .codehilite .l { color: #2695ee } .codehilite .err { color: #37474f } .codehilite .mf { color: #2695ee } .codehilite .c { color: #49a352 } .codehilite .mb { color: #2695ee } .codehilite .nd { color: #37474f } .codehilite .ch { color: #49a352 } .codehilite .py { color: #37474f } .codehilite .cs { color: #2695ee } .codehilite .ni { color: #37474f } .codehilite .nl { color: #6e3bbf } .codehilite .c1 { color: #49a352 } .codehilite .nv { color: #6e3bbf } .codehilite .na { color: #e72263 } .codehilite .go { color: #37474f } .codehilite .s2 { color: #f2453d } .codehilite .ge { color: #3f50b1 } .codehilite .p { color: #37474f } .codehilite .ne { color: #37474f } .codehilite .sb { color: #f2453d } .codehilite .il { color: #2695ee } .codehilite .nc { color: #13abbf } .codehilite .kd { color: #9b26ac } .codehilite .x { color: #37474f } .codehilite .kc { color: #9b26ac } .codehilite .sd { color: #49a352 } .codehilite .cm { color: #49a352 } .codehilite .kn { color: #9b26ac } .codehilite .s1 { color: #f2453d } .codehilite .gp { color: #37474f } .codehilite .gd { color: #37474f } .codehilite .o { color: #37474f } .codehilite .sh { color: #f2453d } .codehilite .mo { color: #2695ee } .codehilite .k { color: #9b26ac } .codehilite .w { color: #37474f } .codehilite .nn { color: #37474f } .codehilite .sr { color: #49a352 } .codehilite .mi { color: #2695ee } .codehilite .sx { color: #f2453d } .codehilite .gt { color: #37474f } .codehilite .ow { color: #37474f } .codehilite .kr { color: #9b26ac } .codehilite .s { color: #f2453d } .codehilite .sc { color: #2695ee } .codehilite .gr { color: #37474f } .codehilite .gs { color: #fd5931 } .codehilite .vi { color: #6e3bbf } .codehilite .n { color: #37474f } .codehilite .ld { color: #2695ee } .codehilite .m { color: #2695ee } .codehilite .no { color: #37474f } .codehilite .kp { color: #9b26ac } .codehilite .mh { color: #2695ee } .codehilite .vg { color: #6e3bbf } .codehilite .vc { color: #6e3bbf } .codehilite .se { color: #49a352 } .codehilite .gu { color: #9b26ac } .codehilite .hll { display: block; background-color: rgba(251, 250, 219, 1.000000) }
+</style>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			showProcessingMessages: false,
+			messageStyle: "none",
+			skipStartupTypeset: false,
+			showMathMenu: false,
+			showMathMenuMSIE: false,
+			extensions: [],
+			tex2jax: {
+				inlineMath: [ ["\\(","\\)"] ],
+				displayMath: [ ["\\[","\\]"] ]
+			}
+		});
+	</script>
+	<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body class="app-style-light app-theme-Material-Light app-lang-en-ES">
+<h3 id="ws-p2-nodejs-backend-angular-frontend">WS-P2 NodeJS Backend &amp; Angular Frontend</h3>
+<p><em>Barcelona. Saturday NOV 17 2018. By Francesc Sans</em></p>
+<p>Javascript approach for Server &amp; Client demo, using the following frameworks and applications:</p>
+<ul>
+<li>NodeJS</li>
+<li>Angular</li>
+<li>FileMaker Server</li>
+<li>Postman</li>
+</ul>
+<h3 id="1-creating-a-basic-http-server-with-nodejs">1 Creating a basic HTTP server with NodeJS</h3>
+<p>Verify if npm is installed, install NodeJS or Update to required version:</p>
+<div class="codehilite"><pre><span></span>npm --version
+node --version
+brew install nodejs
+npm --version
+</pre></div>
+
+
+<p>Create the app folder and the main file <strong>myApp.js</strong></p>
+<div class="codehilite"><pre><span></span>take ~/Desktop/fmc-demo/part_2
+stt myApp.js
+</pre></div>
+
+
+<p>write the app <strong>myApp.js</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server running at http://</span><span class="si">${</span><span class="nx">hostname</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Start the app <strong>myApp.js</strong></p>
+<blockquote>
+<p>node myApp.js</p>
+</blockquote>
+<p>Open the app with the browser at the configured host:port <a href="http://localhost:3000">http://localhost:3000</a></p>
+<h3 id="2-modules">2 Modules</h3>
+<p>Create a simple module <strong>getDate.js</strong></p>
+<div class="codehilite"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">myDateTime</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Date</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>add the function to our app <strong>myApp.js</strong></p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">dt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./getDate&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;The date and time are currently: &quot;</span> <span class="o">+</span> <span class="nx">dt</span><span class="p">.</span><span class="nx">myDateTime</span><span class="p">());</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server running at http://</span><span class="si">${</span><span class="nx">hostname</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>The basic: FileSystem. Create a new HTML page</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is my HTML page<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>And update our app <strong>myApp.js</strong></p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;demofile1.html&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/html&#39;</span><span class="p">});</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server running at http://</span><span class="si">${</span><span class="nx">hostname</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>More advanced server that allows passing which file to open...</p>
+<p>Create a minimalist HTML page</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is my HTML page<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Now add a url parser and load the page on demand (parse the url and get the page file)</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">q</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="nx">q</span><span class="p">.</span><span class="nx">pathname</span><span class="p">;</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/html&#39;</span><span class="p">});</span>
+      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&quot;404 Not Found&quot;</span><span class="p">);</span>
+    <span class="p">}</span>  
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/html&#39;</span><span class="p">});</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server running at http://</span><span class="si">${</span><span class="nx">hostname</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Now we can create additional static pages and serve it dynamically <em><mark>(demo)</mark></em>, but we still need to merge it with live data and off course malke much more complex front end pages.</p>
+<p>Here comes UI Frameworks like Angulas, Rest, Vue and others.</p>
+<h3 id="3-generating-complex-front-ends">3 Generating complex front ends</h3>
+<p>NOTE: from now using angular 7 !!!</p>
+<p>Explain what is Angular and angular cli</p>
+<div class="codehilite"><pre><span></span>npm install -g @angular/cli
+ng
+</pre></div>
+
+
+<p>Basic node/angular app, named <strong>myapp</strong></p>
+<div class="codehilite"><pre><span></span>take ~/Desktop/fmc-demo/part_2
+ng new myapp
+<span class="nb">cd</span> myapp
+ng serve -o
+</pre></div>
+
+
+<p>Review the output messages</p>
+<p>Check it out in the browser at <a href="http://localhost:4200">http://localhost:4200</a> </p>
+<p>From now move to vscode</p>
+<div class="codehilite"><pre><span></span>code .
+</pre></div>
+
+
+<p>Create modules NV, HOME and POST</p>
+<div class="codehilite"><pre><span></span>ng generate component nav
+ng generate component home
+ng generate component posts
+</pre></div>
+
+
+<p>open the Terminal view in vscode and crete the new components</p>
+<p>change the <strong>app.component.html</strong> to </p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">app-nav</span><span class="p">&gt;&lt;/</span><span class="nt">app-nav</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">router-outlet</span><span class="p">&gt;&lt;/</span><span class="nt">router-outlet</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Create a basic home page in <strong>home.component.html</strong></p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">button</span> <span class="err">(</span><span class="na">click</span><span class="err">)=&quot;</span><span class="na">firstClick</span><span class="err">()&quot;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>Setup the home component as weel</p>
+<div class="codehilite"><pre><span></span><span class="kr">export</span> <span class="kr">class</span> <span class="nx">HomeComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit() {</span>
+  <span class="p">}</span>
+
+  <span class="nx">firstClick() {</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;clicked&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>change the <strong>nav.component.html</strong> to </p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">routerLink</span><span class="o">=</span><span class="s">&quot;/&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;logo&quot;</span><span class="p">&gt;</span>{{ appTitle }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">routerLink</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">routerLink</span><span class="o">=</span><span class="s">&quot;/posts&quot;</span><span class="p">&gt;</span>Posts<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>change the <strong>nav.component.ts</strong> to </p>
+<div class="codehilite"><pre><span></span><span class="kr">export</span> <span class="kr">class</span> <span class="nx">NavComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+   <span class="nx">appTitle</span> <span class="o">=</span> <span class="s1">&#39;FMCat&#39;</span><span class="p">;</span>
+
+   <span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+   <span class="nx">ngOnInit() {</span>
+   <span class="p">}</span>
+
+ <span class="p">}</span>
+</pre></div>
+
+
+<p>add some ccs to the global css in /src/styles.scss</p>
+<div class="codehilite"><pre><span></span><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;https://fonts.googleapis.com/css?family=Montserrat:400,700&#39;</span><span class="o">)</span><span class="p">;</span>
+
+<span class="nt">body</span><span class="o">,</span> <span class="nt">html</span> <span class="p">{</span>
+    <span class="nb">height</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nb">margin</span><span class="o">:</span> <span class="m">0</span> auto<span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="nb">font-family</span><span class="o">:</span> <span class="s1">&#39;Montserrat&#39;</span><span class="p">;</span>
+    <span class="nb">font-size</span><span class="o">:</span> <span class="m">18px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span> <span class="p">{</span>
+    <span class="nb">text-decoration</span><span class="o">:</span> none<span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.container</span> <span class="p">{</span>
+    <span class="nb">width</span><span class="o">:</span> <span class="m">80%</span><span class="p">;</span>
+    <span class="nb">margin</span><span class="o">:</span> <span class="m">0</span> auto<span class="p">;</span>
+    <span class="nb">padding</span><span class="o">:</span> <span class="m">1.3em</span><span class="p">;</span>
+    <span class="nb">display</span><span class="o">:</span> <span class="nb">grid</span><span class="p">;</span>
+    <span class="nb">grid-template-columns</span><span class="o">:</span> <span class="m">30%</span> auto<span class="p">;</span>
+
+    <span class="n">a</span> <span class="err">{</span>
+        <span class="nb">color</span><span class="o">:</span> white<span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+
+<span class="nt">section</span> <span class="p">{</span>
+    <span class="nb">width</span><span class="o">:</span> <span class="m">80%</span><span class="p">;</span>
+    <span class="nb">margin</span><span class="o">:</span> <span class="m">0</span> auto<span class="p">;</span>
+    <span class="nb">padding</span><span class="o">:</span> <span class="m">2em</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>custom css for the <strong>nav.component.scss</strong></p>
+<div class="codehilite"><pre><span></span><span class="nx">header</span> <span class="p">{</span>
+    <span class="nx">background</span><span class="o">:</span> <span class="err">#</span><span class="mi">7700</span><span class="nx">FF</span><span class="p">;</span>
+
+    <span class="p">.</span><span class="nx">logo</span> <span class="p">{</span>
+        <span class="nx">font</span><span class="o">-</span><span class="nx">weight</span>: <span class="kt">bold</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">nav</span> <span class="p">{</span>
+        <span class="nx">justify</span><span class="o">-</span><span class="nx">self</span>: <span class="kt">right</span><span class="p">;</span>
+
+        <span class="nx">ul</span> <span class="p">{</span>
+            <span class="nx">list</span><span class="o">-</span><span class="nx">style</span><span class="o">-</span><span class="nx">type</span>: <span class="kt">none</span><span class="p">;</span>
+            <span class="nx">margin</span>: <span class="kt">0</span><span class="p">;</span> <span class="nx">padding</span>: <span class="kt">0</span><span class="p">;</span>
+
+            <span class="nx">li</span> <span class="p">{</span>
+                <span class="kr">float</span><span class="o">:</span> <span class="nx">left</span><span class="p">;</span>
+
+                <span class="nx">a</span> <span class="p">{</span>
+                    <span class="nx">padding</span>: <span class="kt">1.5em</span><span class="p">;</span>
+                    <span class="nx">text</span><span class="o">-</span><span class="nx">transform</span>: <span class="kt">uppercase</span><span class="p">;</span>
+                    <span class="nx">font</span><span class="o">-</span><span class="nx">size</span>: <span class="kt">.8em</span><span class="p">;</span>
+
+                    <span class="o">&amp;:</span><span class="nx">hover</span> <span class="p">{</span>
+                        <span class="nx">background</span><span class="o">:</span> <span class="err">#</span><span class="mi">8</span><span class="nx">E2BFF</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Setup the routing (navigation) editing the <strong>app-routing.module.ts</strong></p>
+<div class="codehilite"><pre><span></span><span class="c1">// add imports</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">HomeComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./home/home.component&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">PostsComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./posts/posts.component&#39;</span><span class="p">;</span>
+
+<span class="c1">// add the routes</span>
+
+<span class="kr">const</span> <span class="nx">routes</span>: <span class="kt">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nx">component</span>: <span class="kt">HomeComponent</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="nx">component</span>: <span class="kt">PostsComponent</span> <span class="p">},</span>
+<span class="p">];</span>
+</pre></div>
+
+
+<p>Now lets see how to connect NodeJS/Angular to data services...</p>
+<h3 id="4-conencting-nodejs-to-filemaker-server-data-api">4 Conencting NodeJS to FileMaker Server (DATA API)</h3>
+<p>Use the NodeJS to FileMaker Data API wrapper created by Jacob Thomann from <a href="https://thomann061.github.io/fmrest/">https://thomann061.github.io/fmrest/</a></p>
+<div class="codehilite"><pre><span></span>npm install fmrest
+</pre></div>
+
+
+<p>From here you can integrate FileMaker Data into any NodeJS app:</p>
+<p>NOTE: check if we have DAT API acces to our database creted in the WorkShop PART 1
+(Open Postman and test it). Check FileMaker <a href="https://fmhelp.filemaker.com/docs/17/en/dataapi/index.html">DATA API</a> here</p>
+<p>Get the authorization token from the server (TTL is 15 minutes)</p>
+<div class="codehilite"><pre><span></span>curl -X POST 
+ https://remoto.codroper.com/fmi/data/v1/databases/FMCat/sessions 
+ -H <span class="s1">&#39;Authorization: Basic YWRtaW46cGFzc3dvcmQ=&#39;</span> 
+ -H <span class="s1">&#39;Content-Type: application/json&#39;</span> 
+ -d <span class="s1">&#39;{}&#39;</span>
+</pre></div>
+
+
+<p>with postman, get session token</p>
+<p><img alt="" src="http://www.ntwk.es//images/fmcat-sessions-dataapi-auth.png" /></p>
+<p>get records</p>
+<p><img alt="" src="http://www.ntwk.es//images/fmcat-sessions-dataapi-getrecords.png" /></p>
+<p>Please use our FMCat Postman Collection to run the tests above. You must setup your environment parameters since the demo server will be available only during this workshop.</p>
+<p><a href="https://app.getpostman.com/run-collection/a3207c331f3d2c79d864"><img alt="Run in Postman" src="https://run.pstmn.io/button.svg" /></a></p>
+<p>With the fmrest wrapper in NodeJS, sample authorization (get session token)</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">Fmrest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fmrest&#39;</span><span class="p">);</span>
+
+<span class="c1">// SBasic configuration</span>
+<span class="kr">const</span> <span class="nx">filemaker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Fmrest</span><span class="p">({</span>
+    <span class="nx">user</span><span class="o">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="o">:</span> <span class="s2">&quot;wakawaka&quot;</span><span class="p">,</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="s2">&quot;http://remoto.codroper.com&quot;</span><span class="p">,</span>
+    <span class="nx">database</span><span class="o">:</span> <span class="s2">&quot;FMCat&quot;</span>
+<span class="p">});</span>
+
+<span class="nx">filemaker</span><span class="p">.</span><span class="nx">setLayout</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Basic login</p>
+<div class="codehilite"><pre><span></span><span class="nx">filemaker</span>
+    <span class="p">.</span><span class="nx">login</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">body</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="p">});</span>
+</pre></div>
+
+
+<p>Or logout</p>
+<div class="codehilite"><pre><span></span><span class="nx">filemaker</span>
+    <span class="p">.</span><span class="nx">logout</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">body</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="p">});</span>
+</pre></div>
+
+
+<p>Create a find request</p>
+<div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">request1</span> <span class="o">=</span> <span class="nx">filemaker</span>
+    <span class="p">.</span><span class="nx">createRequest</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;=*&#39;</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">request2</span> <span class="o">=</span> <span class="nx">filemaker</span>
+    <span class="p">.</span><span class="nx">createRequest</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;author_id&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;=9&#39;</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">sort</span> <span class="o">=</span> <span class="nx">filemaker</span>
+    <span class="p">.</span><span class="nx">createSort</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;ascend&#39;</span><span class="p">);</span>
+
+<span class="nx">filemaker</span>
+    <span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+        <span class="nx">requests</span><span class="o">:</span> <span class="p">[</span><span class="nx">request1</span><span class="p">,</span> <span class="nx">request2</span><span class="p">],</span>
+        <span class="nx">sorts</span><span class="o">:</span> <span class="p">[</span><span class="nx">sort</span><span class="p">],</span>
+        <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">limit</span><span class="o">:</span> <span class="mi">10</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">body</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="p">})</span>
+</pre></div>
+
+
+<h4 id="connect-our-test-app-to-our-data-services">Connect our test app to our data services</h4>
+<p>go to our node/angular app and generate a data service:</p>
+<div class="codehilite"><pre><span></span>ng generate service data
+</pre></div>
+
+
+<p>modify the <strong>data.service.ts</strong> adding</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">HttpClient</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/common/http&#39;</span><span class="p">;</span>  <span class="c1">// Import it up here</span>
+
+<span class="kd">@Injectable</span><span class="p">({</span>
+  <span class="nx">providedIn</span><span class="o">:</span> <span class="s1">&#39;root&#39;</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">DataService</span> <span class="p">{</span>
+
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span>: <span class="kt">HttpClient</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">getPosts() {</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8080/posts&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>modify the <strong>posts.component.ts</strong> adding</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../data.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+  <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-home&#39;</span><span class="p">,</span>
+  <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;./home.component.html&#39;</span><span class="p">,</span>
+  <span class="nx">styleUrls</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;./home.component.scss&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">HomeComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+  <span class="nx">posts</span>: <span class="kt">Object</span><span class="p">;</span>
+
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">data</span>: <span class="kt">DataService</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">ngOnInit() {</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">getPosts</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">posts</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">posts</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>add the service to <strong>app.module.ts</strong> adding</p>
+<div class="codehilite"><pre><span></span><span class="p">...</span> 
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">HttpClientModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/common/http&#39;</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="nx">imports</span><span class="o">:</span> <span class="p">[</span>
+    <span class="nx">BrowserModule</span><span class="p">,</span>
+    <span class="nx">AppRoutingModule</span><span class="p">,</span>
+    <span class="nx">HttpClientModule</span><span class="p">,</span>
+  <span class="p">],</span>
+</pre></div>
+
+
+<p>modify the <strong>post.component.html</strong> adding</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Posts<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="err">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&quot;posts&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="err">*</span><span class="na">ngFor</span><span class="o">=</span><span class="s">&quot;let post of posts.data&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ post.id }} {{ post.title }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>and style it at <strong>post.component.scss</strong></p>
+<div class="codehilite"><pre><span></span><span class="nt">ul</span> <span class="p">{</span>
+    <span class="nt">list-style-type</span><span class="nd">:</span> <span class="nt">none</span><span class="o">;</span>
+    <span class="nt">margin</span><span class="nd">:</span> <span class="nt">0</span><span class="o">;</span><span class="nt">padding</span><span class="nd">:</span> <span class="nt">0</span><span class="o">;</span>
+
+    <span class="nt">li</span> <span class="p">{</span>
+        <span class="nt">background</span><span class="nd">:</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">238</span><span class="o">,</span> <span class="nt">238</span><span class="o">,</span> <span class="nt">238</span><span class="o">);</span>
+        <span class="nt">padding</span><span class="nd">:</span> <span class="nt">2em</span><span class="o">;</span>
+        <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">4px</span><span class="o">;</span>
+        <span class="nt">margin-bottom</span><span class="nd">:</span> <span class="nt">7px</span><span class="o">;</span>
+        <span class="nt">display</span><span class="nd">:</span> <span class="nt">grid</span><span class="o">;</span>
+        <span class="nt">grid-template-columns</span><span class="nd">:</span> <span class="nt">60px</span> <span class="nt">auto</span><span class="o">;</span>
+
+        <span class="nt">p</span> <span class="p">{</span>
+            <span class="nt">font-weight</span><span class="nd">:</span> <span class="nt">bold</span><span class="o">;</span>
+            <span class="nt">margin-left</span><span class="nd">:</span> <span class="nt">20px</span><span class="o">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">img</span> <span class="p">{</span>
+            <span class="nt">border-radius</span><span class="nd">:</span> <span class="nt">50</span><span class="err">%</span><span class="o">;</span>
+            <span class="nt">width</span><span class="nd">:</span> <span class="nt">100</span><span class="err">%</span><span class="o">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="end">End</h3>
+<p>Not bad</p>
+<p>Anyway we want something more powerfull and easy (is possible?), so we need to buil someting much bigger... Jump to part 3</p>
+</body>
+</html>
