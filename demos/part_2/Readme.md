@@ -196,7 +196,7 @@ From now move to vscode
 ```bash
 code .
 ```
-Create modules NV, HOME and POST
+Create modules NAV, HOME and POST
 
 ```bash
 ng generate component nav
