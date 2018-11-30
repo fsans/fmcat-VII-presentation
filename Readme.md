@@ -2,6 +2,8 @@
 
 Barcelona, 17 de Noviembre de 2018
 
+[![Documentation Status](https://readthedocs.org/projects/fmcat-vii-presentation/badge/?version=latest)](https://fmcat-vii-presentation.readthedocs.io/en/latest/?badge=latest)
+                
 
 ### Desarrollo de Aplicaciones híbridas web/mobile para sistemas FileMaker
 
