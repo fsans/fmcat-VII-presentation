@@ -1,4 +1,7 @@
 ### WS-P2 NodeJS Backend & Angular Frontend
+
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/fsans/fmcat-VII-presentation/blob/master/Readme.md)
+
 *Barcelona. Saturday NOV 17 2018. By Francesc Sans*
 
 
@@ -196,7 +199,7 @@ From now move to vscode
 ```bash
 code .
 ```
-Create modules NAV, HOME and POST
+Create modules NV, HOME and POST
 
 ```bash
 ng generate component nav

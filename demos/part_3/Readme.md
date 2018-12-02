@@ -1,4 +1,7 @@
-### WS-P3 Generating a full stack Spring,Hibernate,ODBC,NodeJS, Angular application
+### WS-P3 Generating a full stack Spring, Hibernate, SQL, NodeJS, Angular application
+
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/fsans/fmcat-VII-presentation/blob/master/Readme.md)
+
 *Barcelona. Saturday NOV 17 2018. By Francesc Sans*
 
 Full stack app generation using JHipster
@@ -49,7 +52,9 @@ https://start.jhipster.tech/jdl-studio/
 
 
 example:
-```javascript
+
+
+```js
 entity Post {
     title String required,
     content TextBlob required,

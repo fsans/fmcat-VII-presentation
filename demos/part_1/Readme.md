@@ -1,4 +1,7 @@
 ### WS-P1 Springboot REST service
+
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/fsans/fmcat-VII-presentation/blob/master/Readme.md)
+
 *Barcelona. Saturday NOV 17 2018. By Francesc Sans*
 
 
@@ -8,8 +11,8 @@ Spring Boot app with REST API demo, using the following frameworks:
 - SpringBoot
 - JPA & Hibernate
 - H2 & MySQL
-- Maven	
-	
+- Maven 
+    
 #### 1 Create a new Spring Boot starter app
 
 ##### 1.1 Using springboot CLI:
@@ -31,7 +34,7 @@ Go to http://start.spring.io (explain )
 Open with the code IDE (**Intellij Idea**):
 ```bash
 idea pom.xml
-```	
+``` 
 > Explain what is a Maven project and how it is self configured, loaded and built.
 
 #### 2 Create a new database in MySQL
@@ -54,7 +57,7 @@ Create a new database using your IDE of choice (**Sequel Pro**):
    
 
 
-   	
+    
 #### 3 Setup Spring application properties
 
 Edit src/main/resources/application.properties
