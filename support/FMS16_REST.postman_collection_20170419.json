@@ -1,0 +1,438 @@
+{
+	"variables": [],
+	"info": {
+		"name": "FMS REST",
+		"_postman_id": "dd66d246-ef4b-7072-92c8-73e4ae813cd3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/auth/the_UI",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"login_layout\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "authentication oAuth",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/auth/the_UI",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-FM-Data-Login-Type",
+						"value": "oauth",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"oAuthRequestId\":\"E65B98BB17429CO643B31119F\",\"oAuthIdentifier\":\"B164A3459A776E5177445DR223\",\"layout\":\"login_layout\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all records - default = 100",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility",
+				"method": "GET",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all records",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility?range=20000",
+				"method": "GET",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all records - XML comparison",
+			"request": {
+				"url": "https://{{server}}/fmi/xml/fmresultset.xml?-db=the_UI&-lay=FRUIT_utility&-findall",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic cmVzdDpyZXN0",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get one record",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": "note that all field values are string!!!"
+			},
+			"response": []
+		},
+		{
+			"name": "create record",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility",
+				"method": "POST",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\": {\n      \"fruit\": \"value_1\",\n      \"country\": \"value_2\"\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete one record",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility/10014",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "edit record",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility/10007",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\": {\n      \"fruit\": \"value_1000\"\n    }\n}"
+				},
+				"description": "can create and update related records!\n\nto create portal record use .0 as the record id\n\nto update a portal record, use .<recordID>"
+			},
+			"response": []
+		},
+		{
+			"name": "get records range and sort",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility?recordId=1&range=50&sort=[{ \"fieldName\": \"country\", \"precedence\": 1, \"sortOrder\": \"ascend\" }, { \"fieldName\": \"fruit\", \"precedence\": 2, \"sortOrder\": \"descend\" }]",
+				"method": "GET",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "find records",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/find/the_UI/FRUIT_utility",
+				"method": "POST",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": [\n    {\n      \"country\": \"=Belgium\",\n      \"fruit\": \"*e*\"\n      // \"omit\" : true\n    },\n    {\n      \"Country\": \"=France\"\n    }\n  ],\n  \"sort\": [\n  \t// no precedence indicator - inferred by the order here\n    {\n      \"fieldName\": \"country\",\n      \"sortOrder\": \"ascend\"\n    },\n    {\n      \"fieldName\": \"fruit\",\n      \"sortOrder\": \"ascend\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "set global field",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/global/the_UI/FRUIT_utility",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"globalFields\": {\n     \"global_field_text\":\"globalFieldValue1\",\n     \"global_field_number\": \"1\",\n     \"global_field_number_repeat(1)\": \"77\",\n     \"global_field_number_repeat(2)\": \"8800\"\n     }\n}"
+				},
+				"description": "set for the user's session\nsee 'get one record'"
+			},
+			"response": []
+		},
+		{
+			"name": "get one record with portal data",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/cake_utility/5001",
+				"method": "GET",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": "note that all field values are string!!!"
+			},
+			"response": []
+		},
+		{
+			"name": "create record with portal data",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/cake_utility",
+				"method": "POST",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\": {\n      \"cake\": \"value_1\",\n      \"country\": \"value_2\",\n      \"cake_FRUIT__ac::fruit.0\": \"my fruity fruit\",\n      \"cake_FRUIT__ac::country.0\": \"value_2\"\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "edit record with portal data",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/cake_utility/10006",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\": {\n      \"cake\": \"value_1\",\n      \"country\": \"value_2000\",\n      \"cake_FRUIT__ac::fruit.0\": \"my other fruity fruit\",\n      \"cake_FRUIT__ac::country.0\": \"value_2000\",\n      \"cake_FRUIT__ac::country.10007\": \"value_2000\"\n    }\n}"
+				},
+				"description": "can create and update related records!\n\nto create portal record use .0 as the record id\n\nto update a portal record, use .<recordID>"
+			},
+			"response": []
+		},
+		{
+			"name": "edit record with portal data - delete child",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/cake_utility/10006",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\": {\n      \"deleteRelated\": [\"cake_FRUIT__ac.10012\"]\n    }\n}"
+				},
+				"description": "can create and update related records!\n\nto create portal record use .0 as the record id\n\nto update a portal record, use .<recordID>"
+			},
+			"response": []
+		},
+		{
+			"name": "edit record with repeating field",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/FRUIT_utility/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\": {\n      \"field_number_repeat(5)\": \"5\"\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "edit record - delete portal data",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/CAKE_utility/5001",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":{\"deleteRelated\":\"cake_FRUIT__ac.57\",\"deleteRelated\":\"cake_FRUIT__ac.761\"}}"
+				},
+				"description": "can create and update related records!\n\nto create portal record use .0 as the record id\n\nto update a portal record, use .<recordID>"
+			},
+			"response": []
+		},
+		{
+			"name": "get one record with portal data unnamed portals",
+			"request": {
+				"url": "https://{{server}}/fmi/rest/api/record/the_UI/CAKE_utility_ac_test/5001",
+				"method": "GET",
+				"header": [
+					{
+						"key": "FM-data-token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"rest\",\"password\":\"rest\",\"layout\":\"smallerTable\"}"
+				},
+				"description": "note that all field values are string!!!"
+			},
+			"response": []
+		}
+	]
+}
