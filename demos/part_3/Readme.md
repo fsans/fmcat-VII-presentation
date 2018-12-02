@@ -1,6 +1,6 @@
 ### WS-P3 Generating a full stack Spring, Hibernate, SQL, NodeJS, Angular application
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/fsans/fmcat-VII-presentation/blob/master/Readme.md)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/fsans/fmcat-VII-presentation/blob/master/LICENSE.txt)
 
 *Barcelona. Saturday NOV 17 2018. By Francesc Sans*
 
